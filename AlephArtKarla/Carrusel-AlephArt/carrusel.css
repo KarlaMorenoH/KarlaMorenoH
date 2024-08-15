@@ -1,0 +1,79 @@
+/* Ajustes para la navbar */
+.navbar {
+    background-color: #050831;
+    z-index: 500;
+  }
+  
+  .nav-item {
+    color: #FFFFFF;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  /* Ajustes para la navbar en pantallas pequeñas */
+  @media (max-width: 767px) {
+    .navbar-nav.ml-auto {
+      justify-content: flex-start;
+    }
+  }
+  
+  /* Estilos para el carrusel */
+  .carousel-item img {
+    opacity: 0.7;
+  }
+  
+  .conoce {
+    color: #000000;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    text-align: left;
+    font-size: 3rem;
+    padding: 0 1rem;
+  }
+  
+  .name-surname {
+    color: #133072;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    text-align: left;
+    font-size: 3rem;
+    padding: 0 1rem;
+  }
+  
+  .profession {
+    color: #000000;
+    font-family: "Taviraj", serif;
+    font-weight: 400;
+    text-align: left;
+    padding: 0 7rem;
+    font-size: 3rem;
+  }
+  
+  .container-color {
+    background-color: rgba(249, 0, 82, 0.5);
+    width: 80%;
+    height: auto;
+    margin: auto; /* Centrar el contenedor horizontalmente */
+    padding: 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    
+    .carousel-caption {
+       height: 200px;
+       width: 250px;
+      }
+
+    .container-color {
+      width: 500px;
+      height: 500px;
+    }
+  
+    .conoce, .name-surname, .profession {
+      font-size: 1rem;
+      margin-top: 80%;
+
+      
+    }
+  }
