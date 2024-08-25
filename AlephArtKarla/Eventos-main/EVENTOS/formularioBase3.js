@@ -1,5 +1,3 @@
-// Initialize a new ItemsController with currentId set to 0
-const itemsController = new ItemsController(0);
 
 // Select the New Event Form
 const newEventForm = document.querySelector('#formularioEvento');
@@ -11,13 +9,15 @@ newEventForm.addEventListener('submit', function(event) {
     event.preventDefault();
 
     // Get the values of the inputs
-    const nombre = document.getElementById('nombre');
-    const inputDate = document.getElementById('inputDate');
-    const inputCity = document.getElementById('inputCity');
-    const inputState = document.getElementById('inputState');
-    const inputCategory = document.getElementById('inputCategory');
-    const inputMode = document.getElementById('inputMode');
-    const descripcion = document.getElementById('descripcion');
+    const item = {
+        nombre: document.getElementById('nombre').value.trim(),
+        inputDate: document.getElementById('inputDate').value.trim(),
+        inputCity: document.getElementById('inputCity').value.trim(),
+        inputState: document.getElementById('inputState').value,
+        inputCategory: document.getElementById('inputCategory').value,
+        inputMode: document.getElementById('inputMode').value,
+        descripcion: document.getElementById('descripcion').value.trim()
+    };
 
     const errores = [];
 
@@ -60,14 +60,19 @@ newEventForm.addEventListener('submit', function(event) {
         document.getElementById('descripcionError').textContent = 'Este campo es obligatorio.';
     }
 
-    // Mostrar alertas Swal según el número de errores
+    // Mostrar alertas Swal según el número de errores y si se valida por completo el formulario, se redireccione a la página de eventos.
     if (errores.length === 0) {
         Swal.fire({
             icon: "success",
             title: "¡Formulario enviado!",
             text: "Formulario enviado correctamente. Tu evento será publicado."
+        }).then(() => {
+            // Redirigir después de 2 segundos
+            setTimeout(() => {
+                window.location.href = '/html/eventos.html'; // Página de eventos
+            }, 2000);
         });
-
+        
         // Almacenar los datos en localStorage
         const evento = {
             nombre: nombre.value.trim(),
@@ -89,11 +94,13 @@ newEventForm.addEventListener('submit', function(event) {
         nombre.value = '';
         inputDate.value = '';
         inputCity.value = '';
-        inputState.value = 'Estado';
-        inputCategory.value = 'Categoría';
-        inputMode.value = 'Modalidad';
+        inputState.value = 'Estado'; //Reestablecer valor predeterminado
+        inputCategory.value = 'Categoría'; //Reestablecer valor predeterminado
+        inputMode.value = 'Modalidad'; //Reestablecer valor predeterminado
         descripcion.value = '';
 
+
+    //Coloco estas notificaciones hasta abajo, porque si no, no se guardan los datos del formulario.
     } else if (errores.length === 1) {
         Swal.fire({
             icon: "error",
